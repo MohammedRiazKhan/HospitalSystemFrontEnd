@@ -14,6 +14,8 @@ import { PatientListComponent } from './components/ui-components/hospital/patien
 import { EditPatientComponent } from './components/ui-components/hospital/patient/edit-patient/edit-patient.component';
 import { VisitListComponent } from './components/ui-components/hospital/visit/visit-list/visit-list.component';
 import { DoctorListComponent } from './components/ui-components/hospital/employee/doctor/doctor-list/doctor-list.component';
+import { EditDoctorComponent } from './components/ui-components/hospital/employee/doctor/edit-doctor/edit-doctor.component';
+import { ViewVisitComponent } from './components/ui-components/hospital/visit/view-visit/view-visit.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { DoctorListComponent } from './components/ui-components/hospital/employe
     PatientListComponent,
     EditPatientComponent,
     VisitListComponent,
-    DoctorListComponent
+    DoctorListComponent,
+    EditDoctorComponent,
+    ViewVisitComponent
   ],
   imports: [
     BrowserModule,
