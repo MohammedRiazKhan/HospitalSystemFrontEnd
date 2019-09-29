@@ -41,6 +41,13 @@ export class PatientListComponent implements OnInit {
     );
   }
 
+  editPatient(id:string) {
+
+    this.router.navigate(['/patients/edit']);
+    this.patientService.saveId(id);
+
+  }
+
   setActive(){
     document.getElementById('doctorsLink').classList.remove('active');
     document.getElementById('patientsLink').classList.add('active');

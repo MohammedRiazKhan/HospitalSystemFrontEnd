@@ -24,7 +24,7 @@
             <td>{{patient.age}}</td>
             <td>{{patient.address}}</td>
             <td>{{patient.identityNumber}}</td>
-            <td><a class="btn btn-dark" style="color: white" href="#" routerLink="/patients/edit">Edit</a></td>
+            <td><a class="btn btn-dark" style="color: white" (click)="editPatient(patient.patientId)">Edit</a></td>
           </tr>
         </tbody>
       </table>
