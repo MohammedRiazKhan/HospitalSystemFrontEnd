@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Patient } from 'src/app/domain/patient/patient';
+import { InPatientPatient } from 'src/app/domain/patient/patient';
 import { PatientService } from 'src/app/services/patient/patient.service';
 import { Router } from '@angular/router';
+import { InPatient } from 'src/app/domain/patient/in-patient';
 
 @Component({
   selector: 'app-patient-list',
@@ -10,10 +11,10 @@ import { Router } from '@angular/router';
 })
 export class PatientListComponent implements OnInit {
 
-  private patients: Patient[];
+  private patients: InPatient[];
 
-  private patient:Patient;
-  id:number;
+  private patient:InPatient;
+  id:string;
 
   constructor(private patientService:PatientService, private router:Router) { }
 
@@ -30,7 +31,7 @@ export class PatientListComponent implements OnInit {
     });
   }
 
-  deletePatient(id:number) {
+  deletePatient(id:string) {
     this.patientService.deletePatient(id).subscribe(
 
       data => {

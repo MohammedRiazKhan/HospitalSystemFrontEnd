@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class EditDoctorComponent implements OnInit {
 
   doctor:Doctor;
-  id:number;
+  id:string;
 
   _doctor: Doctor = new Doctor();
   submitted = false;

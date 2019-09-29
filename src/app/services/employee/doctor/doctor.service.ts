@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class DoctorService {
 
   private baseURL: string = '//localhost:8080/doctor';
-  private id:number;
+  private id:string;
 
   constructor(private http:HttpClient) {}
 
@@ -19,7 +19,7 @@ export class DoctorService {
 
   }
 
-  findDoctorById(id:number) : Observable<Doctor>{
+  findDoctorById(id:string) : Observable<Doctor>{
 
     return this.http.get<Doctor>(this.baseURL + '/find/' + id);
   }
@@ -30,7 +30,7 @@ export class DoctorService {
 
   }
 
-  deleteDoctor(id: number) : Observable<any>{
+  deleteDoctor(id: string) : Observable<any>{
 
     return this.http.delete(this.baseURL + '/delete/' + id);
 
@@ -42,13 +42,13 @@ export class DoctorService {
 
   }
 
-  saveId(id:number){
+  saveId(id:string){
 
     this.id = id;
 
   }
 
-  getId() : number{
+  getId() : string{
 
     return this.id;
 

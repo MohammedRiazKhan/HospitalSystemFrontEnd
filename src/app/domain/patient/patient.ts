@@ -1,4 +1,4 @@
-export class Patient {
+export class InPatientPatient {
 
     patientId:string;
     firstName:string;

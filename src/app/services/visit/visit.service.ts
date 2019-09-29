@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class VisitService {
 
   private baseURL: string = '//localhost:8080/visit';
-  private id:number;
+  private id:string;
 
   constructor(private http:HttpClient) {}
 
@@ -19,7 +19,7 @@ export class VisitService {
 
   }
 
-  findVisitById(id:number) : Observable<Visit>{
+  findVisitById(id:string) : Observable<Visit>{
 
     return this.http.get<Visit>(this.baseURL + '/find/' + id);
   }
@@ -30,7 +30,7 @@ export class VisitService {
 
   }
 
-  deleteVisit(id: number) : Observable<any>{
+  deleteVisit(id: string) : Observable<any>{
 
     return this.http.delete(this.baseURL + '/delete/' + id);
 
@@ -42,13 +42,13 @@ export class VisitService {
 
   }
 
-  saveId(id:number){
+  saveId(id:string){
 
     this.id = id;
 
   }
 
-  getId() : number{
+  getId() : string{
 
     return this.id;
 

@@ -20,9 +20,7 @@
                 <td>{{visit.visitDate}}</td>
                 <td>{{visit.patientId}}</td>
                 <td>{{visit.doctorId}}</td>
-                <td>{{visit.visitDate}}</td>
-                <td>{{visit.visitDate}}</td>
-                <td><a class="btn btn-dark" style="color: white" href="#" routerLink="/visits/view">View</a></td>
+                <td><a class="btn btn-dark" style="color: white" (click)="viewVisit(visit.visitId)">View</a></td>
               </tr>
             </tbody>
           </table>

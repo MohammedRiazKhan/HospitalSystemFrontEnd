@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Patient } from 'src/app/domain/patient/patient';
 import { PatientService } from 'src/app/services/patient/patient.service';
 import { Router } from '@angular/router';
+import { InPatient } from 'src/app/domain/patient/in-patient';
 
 @Component({
   selector: 'app-edit-patient',
@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
 })
 export class EditPatientComponent implements OnInit {
 
-  patient:Patient;
-  id:number;
+  patient:InPatient;
+  id:string;
 
-  _patient: Patient = new Patient();
+  _patient: InPatient = new InPatient();
   submitted = false;
 
   constructor(private patientService:PatientService, private router:Router) { }

@@ -13,7 +13,7 @@ export class VisitListComponent implements OnInit {
   private visits: Visit[];
 
   private visit:Visit;
-  id:number;
+  id:string;
 
   constructor(private visitService:VisitService, private router:Router) { }
 
@@ -30,7 +30,7 @@ export class VisitListComponent implements OnInit {
     });
   }
 
-  deletePatient(id:number) {
+  deletePatient(id:string) {
     this.visitService.deleteVisit(id).subscribe(
 
       data => {
@@ -38,6 +38,13 @@ export class VisitListComponent implements OnInit {
        this.getVisits();
       }
     );
+  }
+
+  viewVisit(id:string) {
+
+    this.router.navigate(['visits/view']);
+    this.visitService.saveId(id);
+
   }
 
   setActive(){

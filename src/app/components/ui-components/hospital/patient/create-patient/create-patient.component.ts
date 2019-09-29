@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Patient } from 'src/app/domain/patient/patient';
+
 import { PatientService } from 'src/app/services/patient/patient.service';
 import { Router } from '@angular/router';
+import { InPatient } from 'src/app/domain/patient/in-patient';
 
 @Component({
   selector: 'app-create-patient',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class CreatePatientComponent implements OnInit {
 
-  patient: Patient = new Patient();
+  patient: InPatient = new InPatient();
   submitted = false;
 
   constructor(private patientService:PatientService, private router:Router) { }
@@ -20,7 +21,7 @@ export class CreatePatientComponent implements OnInit {
 
   newDoctor() : void{
     this.submitted = false;
-    this.patient = new Patient();
+    this.patient = new InPatient();
   }
 
   save(){

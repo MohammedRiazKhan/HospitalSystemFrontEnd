@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Patient } from 'src/app/domain/patient/patient';
 
-
+import { InPatient } from 'src/app/domain/patient/in-patient';
 
 
 @Injectable({
@@ -12,46 +11,46 @@ import { Patient } from 'src/app/domain/patient/patient';
 export class PatientService {
 
   private baseURL: string = '//localhost:8080/patient';
-  private id:number;
+  private id:string;
 
   constructor(private http:HttpClient) {}
 
-  createPatient(patient:Patient) : Observable<Patient>{
+  createPatient(patient:InPatient) : Observable<InPatient>{
 
-    return this.http.post<Patient>(this.baseURL + '/new', patient);
-
-  }
-
-  findPatientById(id:number) : Observable<Patient>{
-
-    return this.http.get<Patient>(this.baseURL + '/find/' + id);
-  }
-
-  updatePatient(patient:Patient) : Observable<Patient>{
-
-    return this.http.put<Patient>(this.baseURL + '/update', patient);
+    return this.http.post<InPatient>(this.baseURL + '/new', patient);
 
   }
 
-  deletePatient(id: number) : Observable<any>{
+  findPatientById(id:string) : Observable<InPatient>{
+
+    return this.http.get<InPatient>(this.baseURL + '/find/' + id);
+  }
+
+  updatePatient(patient:InPatient) : Observable<InPatient>{
+
+    return this.http.put<InPatient>(this.baseURL + '/update', patient);
+
+  }
+
+  deletePatient(id: string) : Observable<any>{
 
     return this.http.delete(this.baseURL + '/delete/' + id);
 
   }
 
-  getAll() : Observable<Patient[]>{
+  getAll() : Observable<InPatient[]>{
 
-    return this.http.get<Patient[]>(this.baseURL + '/getall');
+    return this.http.get<InPatient[]>(this.baseURL + '/getall');
 
   }
 
-  saveId(id:number){
+  saveId(id:string){
 
     this.id = id;
 
   }
 
-  getId() : number{
+  getId() : string{
 
     return this.id;
 

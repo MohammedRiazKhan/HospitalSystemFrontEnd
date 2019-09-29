@@ -11,16 +11,14 @@ import { Router } from '@angular/router';
 export class ViewVisitComponent implements OnInit {
 
   visit:Visit;
-  id:number;
-
-  _doctor: Visit = new Visit();
+  id:string;
   submitted = false;
 
   constructor(private visitService:VisitService, private router:Router) { }
 
   ngOnInit() {
-
     this.getDoctorToEdit();
+    
   }
 
   getDoctorToEdit(){

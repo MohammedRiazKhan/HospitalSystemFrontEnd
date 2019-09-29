@@ -13,7 +13,7 @@ export class DoctorListComponent implements OnInit {
   private doctors: Doctor[];
 
   private doctor:Doctor;
-  id:number;
+  id:string;
 
   constructor(private doctorService:DoctorService, private router:Router) { }
 
@@ -30,7 +30,7 @@ export class DoctorListComponent implements OnInit {
     });
   }
 
-  deleteNote(id:number) {
+  deleteNote(id:string) {
     this.doctorService.deleteDoctor(id).subscribe(
 
       data => {
@@ -38,6 +38,13 @@ export class DoctorListComponent implements OnInit {
        this.getDoctors();
       }
     );
+  }
+
+  editDoctor(id:string) {
+
+    this.router.navigate(['/doctors/edit']);
+    this.doctorService.saveId(id);
+
   }
 
 
