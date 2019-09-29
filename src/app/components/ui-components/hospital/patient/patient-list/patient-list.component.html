@@ -16,14 +16,14 @@
             <th><i class="fa fa-edit fa-2x"></i></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngFor="let patient of patients">
           <tr>
-            <td>Riaz</td>
-            <td>Khan</td>
-            <td>0762828630</td>
-            <td>23</td>
-            <td>19 Dabchick Rd, Pelican Park, 7941</td>
-            <td>9603025109085</td>
+            <td>{{patient.firstName}}</td>
+            <td>{{patient.lastName}}</td>
+            <td>{{patient.telephone}}</td>
+            <td>{{patient.age}}</td>
+            <td>{{patient.address}}</td>
+            <td>{{patient.identityNumber}}</td>
             <td><a class="btn btn-dark" style="color: white" href="#" routerLink="/patients/edit">Edit</a></td>
           </tr>
         </tbody>

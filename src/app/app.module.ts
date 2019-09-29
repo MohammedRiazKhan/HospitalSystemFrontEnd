@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSliderModule} from '@angular/material';
 import { NavComponent } from './components/ui-components/site-components/nav/nav.component';
 import { FooterComponent } from './components/ui-components/site-components/footer/footer.component';
 import { CreateVisitComponent } from './components/ui-components/hospital/visit/create-visit/create-visit.component';
@@ -16,6 +15,8 @@ import { VisitListComponent } from './components/ui-components/hospital/visit/vi
 import { DoctorListComponent } from './components/ui-components/hospital/employee/doctor/doctor-list/doctor-list.component';
 import { EditDoctorComponent } from './components/ui-components/hospital/employee/doctor/edit-doctor/edit-doctor.component';
 import { ViewVisitComponent } from './components/ui-components/hospital/visit/view-visit/view-visit.component';
+import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ViewVisitComponent } from './components/ui-components/hospital/visit/vi
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSliderModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

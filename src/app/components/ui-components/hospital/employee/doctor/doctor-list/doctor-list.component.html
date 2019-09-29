@@ -3,7 +3,23 @@
         <div>
             <a class="btn btn-dark" style="color: white; float: right; margin-top:10px; margin-bottom:10px;" href="#" routerLink="/doctors/new">Register Doctor</a>
         </div>
+
+        <div *ngFor="let note of notes" class="card myCard">
+
+            <span style="display: none">{{note.noteId}}</span>
+            <span class="myCard-heading">{{note.noteTitle}}</span>
+            <span class="myCard-note">{{note.noteContent}}</span>
+            
+            <div class="myCard-buttons">
+              <button  class="edit" (click)="editNote(note.noteId)"><i class="fa fa-edit" ></i></button>
+              <button class="archive" (click)="archiveNote(note.noteId)"><i class="fa fa-archive"></i></button>
+              <button class="delete" (click)="deleteNote(note.noteId)"><i class="fa fa-remove"></i></button>
+            </div>
+          
+        </div>
+
         <table class="table table-striped">
+
             <thead class="thead-dark">
               <tr>
                 <th scope="col">First Name</th>
@@ -16,15 +32,14 @@
                 <th><i class="fa fa-edit fa-2x"></i></th>
               </tr>
             </thead>
-            <tbody>
+            <tbody *ngFor="let doctor of doctors">
               <tr>
-                <td>Riaz</td>
-                <td>Khan</td>
-                <td>0762828630</td>
-                <td>Renal Doctor</td>
-                <td>28 September 2019</td>
-                <td>9603025109085</td>
-                <td>Kidneys</td>
+                <td>{{doctor.firstName}}</td>
+                <td>{{doctor.lastName}}</td>
+                <td>{{doctor.telephone}}</td>
+                <td>{{doctor.jobTitle}} Doctor</td>
+                <td>{{doctor.identityNumber}}</td>
+                <td>{{doctor.specialisation}}</td>
                 <td><a class="btn btn-dark" style="color: white" href="#" routerLink="/doctors/edit">Edit</a></td>
               </tr>
             </tbody>

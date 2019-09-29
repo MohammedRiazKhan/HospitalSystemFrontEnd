@@ -15,13 +15,13 @@
                 <th><i class="fa fa-eye fa-2x"></i></th>
               </tr>
             </thead>
-            <tbody>
+            <tbody *ngFor="let visit of visits">
               <tr>
-                <td>29 September 2019</td>
-                <td>Riaz</td>
-                <td>Dr Riaz</td>
-                <td>60min</td>
-                <td>Patient was sleepy</td>
+                <td>{{visit.visitDate}}</td>
+                <td>{{visit.patientId}}</td>
+                <td>{{visit.doctorId}}</td>
+                <td>{{visit.visitDate}}</td>
+                <td>{{visit.visitDate}}</td>
                 <td><a class="btn btn-dark" style="color: white" href="#" routerLink="/visits/view">View</a></td>
               </tr>
             </tbody>

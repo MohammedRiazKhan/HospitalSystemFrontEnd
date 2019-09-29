@@ -1,1 +1,53 @@
-<p>edit-doctor works!</p>
+<div class="container" style="margin-top: 10px">
+
+        <div class="card-header">
+            <h3>Update Doctor Information</h3>
+         </div>
+        
+        <div clas="card">
+          
+          <div class="card-body">
+                <form (ngSubmit)="onSubmit()">
+    
+                    <div class="form-group ">
+                      <label for="firstName">First Name</label>
+                      <input type="text" id="firstName" required [(ngModel)]="doctor.firstName" name="firstName" class="form-control"/>
+                    </div>
+                
+                    <div class="form-group">
+                      <label for="lastName">Last Name</label>
+                      <input type="text" id="lastName" required [(ngModel)]="doctor.lastName" name="lastName" class="form-control"/>
+                    </div>
+    
+                    <div class="form-group ">
+                      <label for="jobTitle">Job Title</label>
+                      <input type="text" id="jobTitle" required [(ngModel)]="doctor.jobTitle" name="jobTitle" class="form-control"/>
+                    </div>
+                
+                    <div class="form-group">
+                      <label for="identityNumber">Idendtity Number</label>
+                      <input type="text" id="identityNumber" required [(ngModel)]="doctor.identityNumber" name="identityNumber" class="form-control"/>
+                    </div>
+    
+                    <div class="form-group ">
+                      <label for="employmentDate">Employment Date</label>
+                      <input type="text" id="employmentDate" required [(ngModel)]="doctor.employmentDate" name="employmentDate" class="form-control"/>
+                    </div>
+                
+                    <div class="form-group">
+                      <label for="specialisation">Specialisation</label>
+                      <input type="text" id="specialisation" required [(ngModel)]="doctor.specialisation" name="specialisation" class="form-control"/>
+                    </div>
+                
+                    <div>
+                        <button type="submit" class="btn btn-primary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px" routerLink="doctors">Save</button>
+    
+                    
+                        <button (click)="cancel()" class="btn btn-secondary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px">Cancel</button>
+                    </div>
+                
+                  </form>
+            </div>      
+         </div>
+    </div>
+    
