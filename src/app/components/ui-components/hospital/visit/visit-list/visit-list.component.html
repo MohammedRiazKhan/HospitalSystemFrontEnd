@@ -18,7 +18,7 @@
             <tbody *ngFor="let visit of visits">
               <tr>
                 <td>{{visit.visitDate}}</td>
-                <td>{{visit.patientId}}</td>
+                <td>{{visit.patient.firstName}}</td>
                 <td>{{visit.doctorId}}</td>
                 <td><a class="btn btn-dark" style="color: white" (click)="viewVisit(visit.visitId)">View</a></td>
               </tr>
