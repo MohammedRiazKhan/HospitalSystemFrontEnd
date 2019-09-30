@@ -8,31 +8,31 @@
 
           <div class="card-body">
                 <form (ngSubmit)="onSubmit()">
-    
-                    <div class="form-group ">
-                      <label for="visitDate">Visit Date</label>
-                      <input type="text" id="visitDate" required [(ngModel)]="visit.visitDate" name="visitDate" class="form-control"/>
-                    </div>
-                
-                    <div class="form-group">
-                      <label for="patientId">Patient</label>
-                      <input type="text" id="patientId" required [(ngModel)]="visitId.patientId" name="patientId" class="form-control"/>
-                    </div>
-    
-                    <div class="form-group ">
-                      <label for="doctorId">Doctor</label>
-                      <input type="text" id="doctorId" required [(ngModel)]="visit.doctorId" name="doctorId" class="form-control"/>
-                    </div>
-                
-                    <div>
-                        <button type="submit" class="btn btn-primary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px" routerLink="visits">Save</button>
-    
-                    
-                        <button (click)="cancel()" class="btn btn-secondary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px">Cancel</button>
-                    </div>
-                
-                  </form>
+  
+                  <div class="form-group ">
+                    <label for="visitDate">Visit Date</label>
+                    <input type="text" id="visitDate" required [(ngModel)]="visit.visitDate" name="visitDate" class="form-control"/>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="patientId">Patient</label>
+                    <select class="form-control" id="patientId" #patientItself (change)='getPatient(patientItself.value)' ([ngModel])="visit.patientId" required>
+                      <option value="-1">Select Patient</option>
+                      <option *ngFor="let patient of patients" name="patientId" [value]="patient.patientId">
+                        {{patient.firstName}}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div>
+                      <button type="submit" class="btn btn-primary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px" routerLink="visits">Save</button>
+  
+                  
+                      <button (click)="cancel()" class="btn btn-secondary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px">Cancel</button>
+                  </div>
+              
+                </form>
             </div>      
          </div>
-    </div>
+</div>
     

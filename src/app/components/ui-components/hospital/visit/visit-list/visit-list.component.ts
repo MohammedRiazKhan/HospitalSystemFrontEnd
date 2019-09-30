@@ -18,10 +18,8 @@ export class VisitListComponent implements OnInit {
   constructor(private visitService:VisitService, private router:Router) { }
 
   ngOnInit() {
-    
     this.getVisits();
     this.setActive();
-
   }
 
   getVisits(){

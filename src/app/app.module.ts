@@ -17,6 +17,7 @@ import { EditDoctorComponent } from './components/ui-components/hospital/employe
 import { ViewVisitComponent } from './components/ui-components/hospital/visit/view-visit/view-visit.component';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from "@angular/common/http";
+import { LoginComponent } from './components/ui-components/site-components/login/login.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {HttpClientModule} from "@angular/common/http";
     VisitListComponent,
     DoctorListComponent,
     EditDoctorComponent,
-    ViewVisitComponent
+    ViewVisitComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
