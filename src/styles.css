@@ -74,3 +74,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
     margin-left: 10px;
     margin-right: 10px
 }
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+}
+
+.ng-untouched[required] {
+    border-left: 5px solid black; 
+}
+
+.ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+}

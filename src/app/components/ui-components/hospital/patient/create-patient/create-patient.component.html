@@ -1,53 +1,57 @@
 <div class="container" style="margin-top: 10px">
 
-        <div class="card-header">
-            <h3>Register Patient</h3>
-         </div>
-        
-        <div clas="card">
+  <div class="card-header">
+    <h3>Register Patient</h3>
+  </div>
 
-          <div class="card-body">
-                <form (ngSubmit)="onSubmit()">
-    
-                    <div class="form-group ">
-                      <label for="firstName">First Name</label>
-                      <input type="text" id="firstName" required [(ngModel)]="patient.firstName" name="firstName" class="form-control"/>
-                    </div>
-                
-                    <div class="form-group">
-                      <label for="lastName">Last Name</label>
-                      <input type="text" id="lastName" required [(ngModel)]="patient.lastName" name="lastName" class="form-control"/>
-                    </div>
-    
-                    <div class="form-group ">
-                      <label for="telephone">Telephone</label>
-                      <input type="text" id="telephone" required [(ngModel)]="patient.telephone" name="telephone" class="form-control"/>
-                    </div>
-                
-                    <div class="form-group">
-                      <label for="identityNumber">Idendtity Number</label>
-                      <input type="text" id="identityNumber" required [(ngModel)]="patient.identityNumber" name="identityNumber" class="form-control"/>
-                    </div>
-    
-                    <div class="form-group ">
-                      <label for="address">Address</label>
-                      <input type="text" id="address" required [(ngModel)]="patient.address" name="address" class="form-control"/>
-                    </div>
-                
-                    <div class="form-group">
-                      <label for="age">Age</label>
-                      <input type="text" id="age" required [(ngModel)]="patient.age" name="age" class="form-control"/>
-                    </div>
-                
-                    <div>
-                        <button type="submit" class="btn btn-primary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px" routerLink="patients">Save</button>
-    
-                    
-                        <button (click)="cancel()" class="btn btn-secondary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px">Cancel</button>
-                    </div>
-                
-                  </form>
-            </div>      
-         </div>
+  <div clas="card">
+
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #patientForm="ngForm">
+
+        <div class="form-group ">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" #firstName="ngModel" [(ngModel)]="patient.firstName" name="firstName" class="form-control" required />
+          <div [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger"> Name is required </div>
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" #lastName="ngModel" [(ngModel)]="patient.lastName" name="lastName" class="form-control" required />
+          <div [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger"> Last Name is required </div>
+        </div>
+
+        <div class="form-group ">
+          <label for="telephone">Telephone</label>
+          <input type="text" id="telephone" #telephone="ngModel" [(ngModel)]="patient.telephone" name="telephone" class="form-control" required />
+          <div [hidden]="telephone.valid || telephone.pristine" class="alert alert-danger"> Telephone is required </div>
+        </div>
+
+        <div class="form-group">
+          <label for="identityNumber">Identity Number</label>
+          <input type="text" id="identityNumber" #identityNumber="ngModel" [(ngModel)]="patient.identityNumber" name="identityNumber" class="form-control" required />
+          <div [hidden]="identityNumber.valid || identityNumber.pristine" class="alert alert-danger"> Identity Number is required </div>
+        </div>
+
+        <div class="form-group ">
+          <label for="address">Address</label>
+          <input type="text" id="address" #address="ngModel" [(ngModel)]="patient.address" name="address" class="form-control" required />
+          <div [hidden]="address.valid || address.pristine" class="alert alert-danger"> Address is required </div>
+        </div>
+
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input type="text" id="age" #age="ngModel" [(ngModel)]="patient.age" name="age" class="form-control" required />
+          <div [hidden]="age.valid || age.pristine" class="alert alert-danger"> Age is required </div>
+        </div>
+
+        <div>
+          <button type="submit" [disabled]="patientForm.form.invalid" class="btn btn-primary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px" routerLink="patients">Save</button>
+
+          <button (click)="cancel()" class="btn btn-secondary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px">Cancel</button>
+        </div>
+
+      </form>
     </div>
-    
+  </div>
+</div>

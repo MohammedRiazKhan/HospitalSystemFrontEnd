@@ -11,36 +11,34 @@
     
                     <div class="form-group ">
                       <label for="visitDate">Visit Date</label>
-                      <input type="text" id="visitDate" required [(ngModel)]="visit.visitDate" name="visitDate" class="form-control"/>
+                      <input type="text" id="visitDate" required [(ngModel)]="visit.visitDate" name="visitDate" class="form-control" readonly/>
                     </div>
                 
                     <div class="form-group">
                       <label for="patientId">Patient</label>
-                      <input type="text" id="patientId" required [value]="visit.patient.firstName" name="patientId" class="form-control" />
+                      <input type="text" id="patientId" required [value]="visit.patient.firstName" name="patientId" class="form-control" readonly/>
                     </div>
     
                     <div class="form-group ">
                       <label for="doctorId">Doctor</label>
-                      <input type="text" id="doctorId" required [value]="visit.doctor.firstName" name="doctorId" class="form-control"/>
+                      <input type="text" id="doctorId" required [value]="visit.doctor.firstName" name="doctorId" class="form-control" readonly/>
                     </div>
 
                     <div class="form-group ">
                       <label for="doctorId">Duration</label>
-                      <input type="text" id="duration" ([ngModel])="visit.duration" name="duration" class="form-control" />
+                      <input type="text" id="duration" ([ngModel])="visit.duration" name="duration" class="form-control" readonly/>
                     </div>
 
   
                     <div class="form-group">
                       <label for="patientNote">Notes</label>
-                      <textarea cols="25" rows="10" id="patientNote" required [(ngModel)]="visit.patientNote" name="patientNote" class="form-control"></textarea>
+                      <textarea cols="25" rows="10" id="patientNote" required [(ngModel)]="visit.patientNote" name="patientNote" class="form-control" readonly></textarea>
                     </div>
 
                 
                     <div>
-                        <button type="submit" class="btn btn-primary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px" routerLink="visits">Save</button>
-    
-                    
-                        <button (click)="cancel()" class="btn btn-secondary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px">Cancel</button>
+                      
+                        <button (click)="cancel()" class="btn btn-primary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px">OK</button>
                     </div>
                 
                   </form>

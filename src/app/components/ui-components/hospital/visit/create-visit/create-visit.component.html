@@ -7,11 +7,12 @@
         <div clas="card">
 
           <div class="card-body">
-                <form (ngSubmit)="onSubmit()">
+                <form (ngSubmit)="onSubmit()" #visitForm="ngForm">
   
                   <div class="form-group ">
                     <label for="visitDate">Visit Date</label>
-                    <input type="text" id="visitDate" required [(ngModel)]="visit.visitDate" name="visitDate" class="form-control"/>
+                    <input type="text" id="visitDate" #visitDate required [(ngModel)]="visit.visitDate" name="visitDate" class="form-control"/>
+                    <!-- <div [hidden]="visitDate.valid || visitDate.pristine" class="alert alert-danger"> Visit Date is required </div> -->
                   </div>
 
                   <div class="form-group">
@@ -22,6 +23,7 @@
                         {{patient.firstName}}
                       </option>
                     </select>
+                    <!-- <div [hidden]="patientItself.valid || patientItself.pristine" class="alert alert-danger"> Please Select a Patient </div> -->
                   </div>
 
                   <div class="form-group">
@@ -32,6 +34,7 @@
                         {{doctor.firstName}}
                       </option>
                     </select>
+                    <!-- <div [hidden]="doctorItself.valid || doctorItself.pristine" class="alert alert-danger"> Please Select a Doctor </div> -->
                   </div>
 
                   <div class="form-group">
@@ -42,15 +45,17 @@
                         {{duration}}
                       </option>
                     </select>
+                    <!-- <div [hidden]="duration.valid || duration.pristine" class="alert alert-danger"> Please Select a Duration </div> -->
                   </div>
 
                   <div class="form-group">
                     <label for="patientNote">Notes</label>
-                    <textarea cols="25" rows="10" id="patientNote" required [(ngModel)]="visit.patientNote" name="patientNote" class="form-control"></textarea>
+                    <textarea cols="25" rows="10" id="patientNote"  required [(ngModel)]="visit.patientNote" name="patientNote" class="form-control"></textarea>
+                    <!-- <div [hidden]="notes.valid || notes.pristine" class="alert alert-danger"> Please Select a Duration </div> -->
                   </div>
 
                   <div>
-                      <button type="submit" class="btn btn-primary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px" routerLink="visits">Save</button>
+                      <button type="submit" [disabled]="visitForm.form.invalid" class="btn btn-primary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px" routerLink="visits">Save</button>
   
                   
                       <button (click)="cancel()" class="btn btn-secondary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px">Cancel</button>

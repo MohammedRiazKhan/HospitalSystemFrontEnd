@@ -1,52 +1,83 @@
 <div class="container" style="margin-top: 10px">
 
-    <div class="card-header">
-        <h3>New Doctor</h3>
-     </div>
-    
-    <div clas="card">
-      
-      <div class="card-body">
-            <form (ngSubmit)="onSubmit()">
+  <div class="card-header">
+    <h3>New Doctor</h3>
+  </div>
 
-                <div class="form-group ">
-                  <label for="firstName">First Name</label>
-                  <input type="text" id="firstName" required [(ngModel)]="doctor.firstName" name="firstName" class="form-control"/>
-                </div>
-            
-                <div class="form-group">
-                  <label for="lastName">Last Name</label>
-                  <input type="text" id="lastName" required [(ngModel)]="doctor.lastName" name="lastName" class="form-control"/>
-                </div>
+  <div clas="card">
 
-                <div class="form-group ">
-                  <label for="jobTitle">Job Title</label>
-                  <input type="text" id="jobTitle" required [(ngModel)]="doctor.jobTitle" name="jobTitle" class="form-control"/>
-                </div>
-            
-                <div class="form-group">
-                  <label for="identityNumber">Idendtity Number</label>
-                  <input type="text" id="identityNumber" required [(ngModel)]="doctor.identityNumber" name="identityNumber" class="form-control"/>
-                </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #doctorForm="ngForm">
 
-                <div class="form-group ">
-                  <label for="employmentDate">Employment Date</label>
-                  <input type="text" id="employmentDate" required [(ngModel)]="doctor.employmentDate" name="employmentDate" class="form-control"/>
-                </div>
-            
-                <div class="form-group">
-                  <label for="specialisation">Specialisation</label>
-                  <input type="text" id="specialisation" required [(ngModel)]="doctor.specialisation" name="specialisation" class="form-control"/>
-                </div>
-            
-                <div>
-                    <button type="submit" class="btn btn-primary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px" routerLink="doctors">Save</button>
+        <div class="form-group ">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" #firstname="ngModel" [(ngModel)]="doctor.firstName" name="firstName" class="form-control" required />
+        </div>
 
-                
-                    <button (click)="cancel()" class="btn btn-secondary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px">Cancel</button>
-                </div>
-            
-              </form>
-        </div>      
-     </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" #lastName="ngModel" required [(ngModel)]="doctor.lastName" name="lastName" class="form-control" />
+          <div [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger"> Last Name is required </div>
+        </div>
+
+        <div class="form-group ">
+          <label for="jobTitle">Job Title</label>
+          <input type="text" id="jobTitle" #jobTitle="ngModel" required [(ngModel)]="doctor.jobTitle" name="jobTitle" class="form-control" />
+          <div [hidden]="jobTitle.valid || jobTitle.pristine" class="alert alert-danger"> Job Title is required </div>
+        </div>
+
+        <div class="form-group">
+          <label for="identityNumber">Idendtity Number</label>
+          <input type="text" id="identityNumber" #identityNumber="ngModel" required [(ngModel)]="doctor.identityNumber" name="identityNumber" class="form-control" />
+          <div [hidden]="identityNumber.valid || identityNumber.pristine" class="alert alert-danger"> Identity Number is required </div>
+        </div>
+
+        <!-- <div class="form-group ">
+          <label for="employmentDate">Employment Date</label>
+          <input type="text" id="employmentDate" #employmentDate="ngModel" required [(ngModel)]="doctor.employmentDate" name="employmentDate" class="form-control" />
+          <div [hidden]="employmentDate.valid || employmentDate.pristine" class="alert alert-danger">Employment Date is required </div>
+        </div> -->
+        <div class="form-group">
+
+            <label for="employmentDate">Employment Date</label>
+
+            <div class="input-group">
+
+              <select class="form-control" #day (change)='getDay(day.value)'>
+                  <option value="-1">Day</option>
+                  <option  *ngFor="let day of days" [value]="day">{{day}}</option>
+              </select> 
+
+              <select class="form-control" #month (change)='getMonth(month.value)'>
+                  <option value="-1">Month</option>
+                  <option *ngFor="let month of months" [value]="month">{{month}}</option>
+              </select>   
+
+              <select class="form-control" #year (change)='getYear(year.value)'>
+                  <option value="-1">Year</option>
+                  <option  *ngFor="let year of years" [value]="year">{{year}}</option>
+              </select>   
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+          <label for="specialisation">Specialisation</label>
+          <input type="text" id="specialisation" #specialisation="ngModel" required [(ngModel)]="doctor.specialisation" name="specialisation" class="form-control" />
+          <div [hidden]="specialisation.valid || specialisation.pristine || specialisation.untouched" class="alert alert-danger"> Specialisation is required </div>
+        </div>
+
+        <div>
+          <button type="submit" class="btn btn-primary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px"
+            routerLink="doctors" [disabled]="doctorForm.form.invalid">Save</button>
+
+
+          <button (click)="cancel()" class="btn btn-secondary col-sm-12 col-md-2"
+            style="margin-right:5px; margin-bottom: 5px">Cancel</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
 </div>
