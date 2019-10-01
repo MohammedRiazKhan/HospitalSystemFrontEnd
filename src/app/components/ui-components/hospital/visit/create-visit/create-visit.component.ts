@@ -17,14 +17,24 @@ export class CreateVisitComponent implements OnInit {
 
   visit: Visit = new Visit();
   submitted = false;
+  durations: String[] = ['15 min', '30 min', '1 hr', '2 hr', '3 hr', '4 hr'];
 
   //patients
   private patients: InPatient[];
+  //doctors
+  private doctors: Doctor[];
   
-  constructor(private visitService:VisitService, private router:Router, private patientService:PatientService) { }
+  constructor(private visitService:VisitService, private router:Router, private doctorService:DoctorService, private patientService:PatientService) { }
 
   ngOnInit() {
     this.getPatients();
+    this.getDoctors();
+  }
+
+  getDoctors(){
+    this.doctorService.getAll().subscribe(data => {
+      this.doctors = data;
+    })
   }
 
   getPatients(){
@@ -61,6 +71,31 @@ export class CreateVisitComponent implements OnInit {
     }
 
   }
+
+  getDoctor(value:string){
+
+    if(value != '-1'){
+      this.visit.doctorId = value;
+      console.log(value);
+    }
+    else{
+      console.log(value);
+    }
+
+  }
+
+  getDuration(value:string){
+
+    if(value != '-1'){
+      this.visit.duration = value;
+      console.log(value);
+    }
+    else{
+      console.log(value);
+    }
+
+  }
+
 
 
   onSubmit(){

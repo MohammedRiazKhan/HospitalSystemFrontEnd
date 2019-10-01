@@ -17,11 +17,10 @@ export class ViewVisitComponent implements OnInit {
   constructor(private visitService:VisitService, private router:Router) { }
 
   ngOnInit() {
-    this.getDoctorToEdit();
-    
+    this.getVisitToView();
   }
 
-  getDoctorToEdit(){
+  getVisitToView(){
     
     this.id = this.visitService.getId();
 

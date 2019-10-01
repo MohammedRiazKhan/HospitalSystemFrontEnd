@@ -16,13 +16,25 @@
                 
                     <div class="form-group">
                       <label for="patientId">Patient</label>
-                      <input type="text" id="patientId" required [(ngModel)]="visit.patientId" name="patientId" class="form-control" />
+                      <input type="text" id="patientId" required [value]="visit.patient.firstName" name="patientId" class="form-control" />
                     </div>
     
                     <div class="form-group ">
                       <label for="doctorId">Doctor</label>
-                      <input type="text" id="doctorId" required [(ngModel)]="visit.doctorId" name="doctorId" class="form-control"/>
+                      <input type="text" id="doctorId" required [value]="visit.doctor.firstName" name="doctorId" class="form-control"/>
                     </div>
+
+                    <div class="form-group ">
+                      <label for="doctorId">Duration</label>
+                      <input type="text" id="duration" ([ngModel])="visit.duration" name="duration" class="form-control" />
+                    </div>
+
+  
+                    <div class="form-group">
+                      <label for="patientNote">Notes</label>
+                      <textarea cols="25" rows="10" id="patientNote" required [(ngModel)]="visit.patientNote" name="patientNote" class="form-control"></textarea>
+                    </div>
+
                 
                     <div>
                         <button type="submit" class="btn btn-primary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px" routerLink="visits">Save</button>

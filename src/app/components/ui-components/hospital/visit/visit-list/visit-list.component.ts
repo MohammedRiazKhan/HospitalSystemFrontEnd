@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { Visit } from 'src/app/domain/visit/visit';
 import { InPatient } from 'src/app/domain/patient/in-patient';
 import { PatientService } from 'src/app/services/patient/patient.service';
+import { DoctorService } from 'src/app/services/employee/doctor/doctor.service';
+import { Doctor } from 'src/app/domain/employee/doctor';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-visit-list',
@@ -15,19 +18,20 @@ export class VisitListComponent implements OnInit {
   private visits: Visit[] = [];
   private patients: InPatient[] = [];
   private matchedPatients: InPatient[] = [];
-
+  private doctors: Doctor[] = [];
+  private matchedDoctors: Doctor[] = [];
   private visit:Visit;
   id:string;
 
-  constructor(private visitService:VisitService, private patientService:PatientService, private router:Router) { }
+  constructor(private visitService:VisitService, private patientService:PatientService, private doctorService:DoctorService, private router:Router) { }
 
   ngOnInit() {
     this.getVisits();
     this.getPatients();
+    this.getDoctors();
     this.setActive();
     this.getAllPatientsLinkedWithVisit();
-
-    
+   // this.getAllDoctorsLinkedWithVisit();
   }
 
   getPatients(){
@@ -40,6 +44,12 @@ export class VisitListComponent implements OnInit {
     this.visitService.getAll().subscribe(data => {
       this.visits = data;
     });
+  }
+
+  getDoctors(){
+    this.doctorService.getAll().subscribe(data => {
+        this.doctors = data;
+    })
   }
 
   getAllPatientsLinkedWithVisit(){
@@ -62,6 +72,45 @@ export class VisitListComponent implements OnInit {
           }
       });
 
+      this.doctorService.getAll().subscribe(doctors =>{
+
+        this.doctors = doctors;
+
+        for(var i = 0; i < visits.length; i++){
+           
+          for(var j = 0; j < doctors.length; j++){
+            if(visits[i].doctorId == doctors[j].employeeId){
+              visits[i].doctor = doctors[j];
+            }
+          }
+        }
+    });
+
+
+    });
+
+  }
+
+  getAllDoctorsLinkedWithVisit(){
+
+    this.visitService.getAll().subscribe(visits =>{
+
+      this.visits = visits;
+
+      this.doctorService.getAll().subscribe(doctors =>{
+
+          this.doctors = doctors;
+
+          for(var i = 0; i < visits.length; i++){
+             
+            for(var j = 0; j < doctors.length; j++){
+              if(visits[i].doctorId == doctors[j].employeeId){
+                visits[i].doctor = doctors[j];
+              }
+            }
+          }
+      });
+
     });
 
   }
@@ -78,8 +127,9 @@ export class VisitListComponent implements OnInit {
 
   viewVisit(id:string) {
 
-    this.router.navigate(['visits/view']);
     this.visitService.saveId(id);
+    this.router.navigate(['visits/view']);
+    
 
   }
 

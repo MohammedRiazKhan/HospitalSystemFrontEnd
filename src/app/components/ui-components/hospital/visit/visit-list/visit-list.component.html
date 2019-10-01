@@ -19,7 +19,9 @@
               <tr>
                 <td>{{visit.visitDate}}</td>
                 <td>{{visit.patient.firstName}}</td>
-                <td>{{visit.doctorId}}</td>
+                <td>{{visit.doctor.firstName}}</td>
+                <td>{{visit.duration}}</td>
+                <td>{{visit.patientNote}}</td>
                 <td><a class="btn btn-dark" style="color: white" (click)="viewVisit(visit.visitId)">View</a></td>
               </tr>
             </tbody>

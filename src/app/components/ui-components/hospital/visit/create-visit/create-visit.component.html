@@ -24,6 +24,31 @@
                     </select>
                   </div>
 
+                  <div class="form-group">
+                    <label for="employeeId">Doctor</label>
+                    <select class="form-control" id="employeeId" #doctorItself (change)='getDoctor(doctorItself.value)' ([ngModel])="visit.doctorId" required>
+                      <option value="-1">Select Doctor</option>
+                      <option *ngFor="let doctor of doctors" name="employeeId" [value]="doctor.employeeId">
+                        {{doctor.firstName}}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="duration">Duration</label>
+                    <select class="form-control" id="duration" #duration (change)='getDuration(duration.value)' ([ngModel])="visit.duration" required>
+                      <option value="-1">Select Duration</option>
+                      <option *ngFor="let duration of durations" name="duration" [value]="duration">
+                        {{duration}}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="patientNote">Notes</label>
+                    <textarea cols="25" rows="10" id="patientNote" required [(ngModel)]="visit.patientNote" name="patientNote" class="form-control"></textarea>
+                  </div>
+
                   <div>
                       <button type="submit" class="btn btn-primary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px" routerLink="visits">Save</button>
   
