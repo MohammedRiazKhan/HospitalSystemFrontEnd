@@ -15,21 +15,20 @@
                     </div>
                 
                     <div class="form-group">
-                      <label for="patientId">Patient</label>
-                      <input type="text" id="patientId" required [value]="visit.patient.firstName" name="patientId" class="form-control" readonly/>
+                      <label for="patientName">Patient</label>
+                      <input type="text" id="patientName" required [(ngModel)]="visit.patient.firstName" name="patientName" class="form-control" readonly/>
                     </div>
     
                     <div class="form-group ">
                       <label for="doctorId">Doctor</label>
-                      <input type="text" id="doctorId" required [value]="visit.doctor.firstName" name="doctorId" class="form-control" readonly/>
+                      <input type="text" id="doctorId" required [(ngModel)]="visit.doctor.firstName" name="doctorId" class="form-control" readonly/>
                     </div>
 
                     <div class="form-group ">
                       <label for="doctorId">Duration</label>
-                      <input type="text" id="duration" ([ngModel])="visit.duration" name="duration" class="form-control" readonly/>
+                      <input type="text" id="duration" [(ngModel)]="visit.duration" name="duration" class="form-control" readonly/>
                     </div>
 
-  
                     <div class="form-group">
                       <label for="patientNote">Notes</label>
                       <textarea cols="25" rows="10" id="patientNote" required [(ngModel)]="visit.patientNote" name="patientNote" class="form-control" readonly></textarea>

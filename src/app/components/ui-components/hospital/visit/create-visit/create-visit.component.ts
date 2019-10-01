@@ -23,6 +23,36 @@ export class CreateVisitComponent implements OnInit {
   private patients: InPatient[];
   //doctors
   private doctors: Doctor[];
+
+  days: String[] = [
+    '1', '2', '3', '4', '5',
+    '6', '7', '8', '9', '10',
+    '11', '12', '13', '14', '15',
+    '16', '17', '18', '19', '20',
+    '21', '22', '23', '24', '25',
+    '26', '27', '28', '29', '30'
+  ];
+
+  months: String[] = [
+    'Jan',
+    'Feb', 'Mar', 
+    'Apr',
+    'May',
+    'Jun', 'Jul', 
+    'Aug',
+    'Sep',
+    'Oct', 'Nov', 
+    'Dec'
+  ];
+
+  years: String[] = [
+    '2019' 
+  ];
+
+  day:string;
+  month:string
+  year:string;
+
   
   constructor(private visitService:VisitService, private router:Router, private doctorService:DoctorService, private patientService:PatientService) { }
 
@@ -55,6 +85,7 @@ export class CreateVisitComponent implements OnInit {
   save(){
 
     this.visit.visitId = this.genId().toString();
+    this.visit.visitDate = this.getFullDate();
     this.visitService.createVisit(this.visit).subscribe(data => console.log(data), error => console.log(error));
     this.visit = new Visit();
   }
@@ -106,6 +137,38 @@ export class CreateVisitComponent implements OnInit {
 
   cancel(){
     this.router.navigate(['/visits']);
+  }
+
+
+  getDay(value:string){
+
+    if(value != '-1'){
+      console.log(value);
+      this.day = value;
+    }
+
+  }
+
+  getMonth(value:string){
+
+    if(value != '-1'){
+      console.log(value);
+      this.month = value;
+    }
+
+  }
+
+  getYear(value:string){
+
+    if(value != '-1'){
+      console.log(value);
+      this.year = value;
+    }
+
+  }
+
+  getFullDate() : string{
+    return this.day + ' ' + this.month + ' ' + this.year;
   }
 
 }

@@ -9,11 +9,37 @@
           <div class="card-body">
                 <form (ngSubmit)="onSubmit()" #visitForm="ngForm">
   
-                  <div class="form-group ">
+
+                  <div class="form-group">
+
+                    <label for="employmentDate">Employment Date</label>
+        
+                    <div class="input-group">
+        
+                      <select class="form-control" #day (change)='getDay(day.value)'>
+                          <option value="-1">Day</option>
+                          <option  *ngFor="let day of days" [value]="day">{{day}}</option>
+                      </select> 
+        
+                      <select class="form-control" #month (change)='getMonth(month.value)'>
+                          <option value="-1">Month</option>
+                          <option *ngFor="let month of months" [value]="month">{{month}}</option>
+                      </select>   
+        
+                      <select class="form-control" #year (change)='getYear(year.value)'>
+                          <option value="-1">Year</option>
+                          <option  *ngFor="let year of years" [value]="year">{{year}}</option>
+                      </select>   
+        
+                    </div>
+        
+                </div>
+
+                  <!-- <div class="form-group ">
                     <label for="visitDate">Visit Date</label>
                     <input type="text" id="visitDate" #visitDate required [(ngModel)]="visit.visitDate" name="visitDate" class="form-control"/>
-                    <!-- <div [hidden]="visitDate.valid || visitDate.pristine" class="alert alert-danger"> Visit Date is required </div> -->
-                  </div>
+                    <div [hidden]="visitDate.valid || visitDate.pristine" class="alert alert-danger"> Visit Date is required </div>
+                  </div> -->
 
                   <div class="form-group">
                     <label for="patientId">Patient</label>

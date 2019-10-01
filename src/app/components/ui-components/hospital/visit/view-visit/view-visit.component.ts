@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Visit } from 'src/app/domain/visit/visit';
 import { VisitService } from 'src/app/services/visit/visit.service';
 import { Router } from '@angular/router';
+import { PatientService } from 'src/app/services/patient/patient.service';
+import { DoctorService } from 'src/app/services/employee/doctor/doctor.service';
 
 @Component({
   selector: 'app-view-visit',
@@ -14,7 +16,7 @@ export class ViewVisitComponent implements OnInit {
   id:string;
   submitted = false;
 
-  constructor(private visitService:VisitService, private router:Router) { }
+  constructor(private visitService:VisitService, private patientService:PatientService, private doctorService:DoctorService, private router:Router) { }
 
   ngOnInit() {
     this.getVisitToView();
@@ -27,6 +29,14 @@ export class ViewVisitComponent implements OnInit {
     this.visitService.findVisitById(this.id).subscribe(data => {
 
       this.visit = data;
+      
+      this.patientService.findPatientById(this.visit.patientId).subscribe(data => {
+        this.visit.patient = data;
+      })
+
+      this.doctorService.findDoctorById(this.visit.doctorId).subscribe(data => {
+        this.visit.doctor = data;
+      })
 
     });
     
