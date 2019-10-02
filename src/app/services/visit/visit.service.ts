@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Visit } from 'src/app/domain/visit/visit';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,19 +14,31 @@ export class VisitService {
   constructor(private http:HttpClient) {}
 
   createVisit(visit:Visit) : Observable<Visit>{
+    let username='doctor'
+    let password='doctor'
+  
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
 
-    return this.http.post<Visit>(this.baseURL + '/new', visit);
+    return this.http.post<Visit>(this.baseURL + '/new', visit, {headers});
 
   }
 
   findVisitById(id:string) : Observable<Visit>{
+    let username='doctor'
+    let password='doctor'
+  
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
 
-    return this.http.get<Visit>(this.baseURL + '/find/' + id);
+    return this.http.get<Visit>(this.baseURL + '/find/' + id, {headers});
   }
 
   updateVisit(visit:Visit) : Observable<Visit>{
+    let username='doctor'
+    let password='doctor'
+  
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
 
-    return this.http.put<Visit>(this.baseURL + '/update', visit);
+    return this.http.put<Visit>(this.baseURL + '/update', visit, {headers});
 
   }
 
@@ -37,8 +49,12 @@ export class VisitService {
   }
 
   getAll() : Observable<Visit[]>{
+    let username='doctor'
+    let password='doctor'
+  
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
 
-    return this.http.get<Visit[]>(this.baseURL + '/getall');
+    return this.http.get<Visit[]>(this.baseURL + '/getall', {headers});
 
   }
 

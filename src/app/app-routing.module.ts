@@ -9,11 +9,13 @@ import { EditPatientComponent } from './components/ui-components/hospital/patien
 import { CreateDoctorComponent } from './components/ui-components/hospital/employee/doctor/create-doctor/create-doctor.component';
 import { EditDoctorComponent } from './components/ui-components/hospital/employee/doctor/edit-doctor/edit-doctor.component';
 import { ViewVisitComponent } from './components/ui-components/hospital/visit/view-visit/view-visit.component';
+import { LoginComponent } from './components/ui-components/site-components/login/login.component';
 
 
 const routes: Routes = [
 
-  {path: '', redirectTo: 'patients', pathMatch: 'full'},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
   {path: 'patients', component: PatientListComponent},
   {path: 'visits', component: VisitListComponent},
   {path: 'doctors', component : DoctorListComponent},

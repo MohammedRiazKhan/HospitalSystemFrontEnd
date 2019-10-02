@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  loggedIn = false;
+
+  constructor(private loginService: LoginService) { }
 
   ngOnInit() {
+    //this.getLogInState();
+  }
+
+  getLogInState(){
+    this.loggedIn = this.loginService.checkIfLoggedIn();
   }
 
   changeLink1(){
@@ -30,6 +38,10 @@ export class NavComponent implements OnInit {
     document.getElementById('patientsLink').classList.remove('active');
     document.getElementById('doctorsLink').classList.add('active');
 
+  }
+
+  logout(){
+    this.loginService.logOut();
   }
 
 }

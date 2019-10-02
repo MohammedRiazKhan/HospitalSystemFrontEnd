@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { InPatient } from 'src/app/domain/patient/in-patient';
@@ -16,19 +16,31 @@ export class PatientService {
   constructor(private http:HttpClient) {}
 
   createPatient(patient:InPatient) : Observable<InPatient>{
+    let username='doctor'
+    let password='doctor'
+  
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
 
-    return this.http.post<InPatient>(this.baseURL + '/new', patient);
+    return this.http.post<InPatient>(this.baseURL + '/new', patient, {headers});
 
   }
 
   findPatientById(id:string) : Observable<InPatient>{
+    let username='doctor'
+    let password='doctor'
+  
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
 
-    return this.http.get<InPatient>(this.baseURL + '/find/' + id);
+    return this.http.get<InPatient>(this.baseURL + '/find/' + id, {headers});
   }
 
   updatePatient(patient:InPatient) : Observable<InPatient>{
+    let username='doctor'
+    let password='doctor'
+  
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
 
-    return this.http.put<InPatient>(this.baseURL + '/update', patient);
+    return this.http.put<InPatient>(this.baseURL + '/update', patient, {headers});
 
   }
 
@@ -40,7 +52,12 @@ export class PatientService {
 
   getAll() : Observable<InPatient[]>{
 
-    return this.http.get<InPatient[]>(this.baseURL + '/getall');
+    let username='doctor'
+    let password='doctor'
+  
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
+
+    return this.http.get<InPatient[]>(this.baseURL + '/getall', {headers});
 
   }
 

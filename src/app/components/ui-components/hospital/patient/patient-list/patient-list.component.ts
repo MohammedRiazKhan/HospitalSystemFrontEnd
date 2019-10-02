@@ -3,6 +3,7 @@ import { InPatientPatient } from 'src/app/domain/patient/patient';
 import { PatientService } from 'src/app/services/patient/patient.service';
 import { Router } from '@angular/router';
 import { InPatient } from 'src/app/domain/patient/in-patient';
+import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-patient-list',
@@ -16,12 +17,13 @@ export class PatientListComponent implements OnInit {
   private patient:InPatient;
   id:string;
 
-  constructor(private patientService:PatientService, private router:Router) { }
+  constructor(private patientService:PatientService, private loginService:LoginService, private router:Router) { }
 
   ngOnInit() {
     
     this.getPatients();
     this.setActive();
+    this.loginService.unhide();
 
   }
 
