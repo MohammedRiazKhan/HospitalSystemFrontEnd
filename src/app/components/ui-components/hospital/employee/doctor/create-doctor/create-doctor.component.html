@@ -38,15 +38,16 @@
 
             <div class="input-group">
 
+
+              <select class="form-control" #month (change)='getMonth(month.value)'>
+                <option value="-1">Month</option>
+                <option *ngFor="let month of months" [value]="month">{{month}}</option>
+              </select>   
+
               <select class="form-control" #day (change)='getDay(day.value)'>
                   <option value="-1">Day</option>
                   <option  *ngFor="let day of days" [value]="day">{{day}}</option>
               </select> 
-
-              <select class="form-control" #month (change)='getMonth(month.value)'>
-                  <option value="-1">Month</option>
-                  <option *ngFor="let month of months" [value]="month">{{month}}</option>
-              </select>   
 
               <select class="form-control" #year (change)='getYear(year.value)'>
                   <option value="-1">Year</option>

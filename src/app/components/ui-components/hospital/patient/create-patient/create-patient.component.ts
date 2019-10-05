@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { PatientService } from 'src/app/services/patient/patient.service';
 import { Router } from '@angular/router';
 import { InPatient } from 'src/app/domain/patient/in-patient';
-import { Guid } from "guid-typescript";
 
 @Component({
   selector: 'app-create-patient',
@@ -26,13 +25,8 @@ export class CreatePatientComponent implements OnInit {
   }
 
 
-  genId(): Guid{
-    return Guid.create();
-  }
-
   save(){
 
-    this.patient.patientId = this.genId().toString();
     this.patientService.createPatient(this.patient).subscribe(data => console.log(data), error => console.log(error));
     this.patient = new InPatient();
   }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Doctor } from 'src/app/domain/employee/doctor';
 import { DoctorService } from 'src/app/services/employee/doctor/doctor.service';
 import { Router } from '@angular/router';
-import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-create-doctor',
@@ -58,12 +57,7 @@ export class CreateDoctorComponent implements OnInit {
     this.doctor = new Doctor();
   }
 
-  genId(): Guid{
-    return Guid.create();
-  }
-
   save(){
-    this.doctor.employeeId = this.genId().toString();
     this.doctor.employmentDate = this.getFullDate();
     console.log(this.getFullDate());
     this.doctorService.createDoctor(this.doctor).subscribe(data => console.log(data), error => console.log(error));

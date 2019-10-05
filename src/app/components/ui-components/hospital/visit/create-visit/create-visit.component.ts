@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Visit } from 'src/app/domain/visit/visit';
 import { VisitService } from 'src/app/services/visit/visit.service';
 import { Router } from '@angular/router';
-import { Guid } from 'guid-typescript';
 import { InPatient } from 'src/app/domain/patient/in-patient';
 import { PatientService } from 'src/app/services/patient/patient.service';
 import { DoctorService } from 'src/app/services/employee/doctor/doctor.service';
@@ -78,13 +77,8 @@ export class CreateVisitComponent implements OnInit {
     this.visit = new Visit();
   }
 
-  genId(): Guid{
-    return Guid.create();
-  }
-
   save(){
 
-    this.visit.visitId = this.genId().toString();
     this.visit.visitDate = this.getFullDate();
     this.visitService.createVisit(this.visit).subscribe(data => console.log(data), error => console.log(error));
     this.visit = new Visit();
