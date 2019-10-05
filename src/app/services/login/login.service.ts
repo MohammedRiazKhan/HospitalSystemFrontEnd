@@ -58,6 +58,7 @@ hide(){
   document.getElementById('patientsLink').classList.add('hidden');
   document.getElementById('doctorsLink').classList.add('hidden');
   document.getElementById('logout').classList.add('hidden');
+  document.getElementById('appoinmentsLink').classList.add('hidden');
  
 }
 
@@ -66,6 +67,7 @@ unhide(){
   document.getElementById('patientsLink').classList.remove('hidden');
   document.getElementById('doctorsLink').classList.remove('hidden');
   document.getElementById('logout').classList.remove('hidden');
+  document.getElementById('appoinmentsLink').classList.remove('hidden');
 }
 
 }

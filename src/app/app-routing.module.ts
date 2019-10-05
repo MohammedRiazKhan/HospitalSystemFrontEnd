@@ -10,6 +10,9 @@ import { CreateDoctorComponent } from './components/ui-components/hospital/emplo
 import { EditDoctorComponent } from './components/ui-components/hospital/employee/doctor/edit-doctor/edit-doctor.component';
 import { ViewVisitComponent } from './components/ui-components/hospital/visit/view-visit/view-visit.component';
 import { LoginComponent } from './components/ui-components/site-components/login/login.component';
+import { CreateAppointmentComponent } from './components/ui-components/hospital/appointment/create-appointment/create-appointment.component';
+import { ListAppointmentComponent } from './components/ui-components/hospital/appointment/list-appointment/list-appointment.component';
+import { EditAppointmentComponent } from './components/ui-components/hospital/appointment/edit-appointment/edit-appointment.component';
 
 
 const routes: Routes = [
@@ -25,6 +28,9 @@ const routes: Routes = [
   {path: 'patients/edit', component: EditPatientComponent},
   {path: 'visits/new', component: CreateVisitComponent},
   {path: 'visits/view', component: ViewVisitComponent},
+  {path: 'appointments', component: ListAppointmentComponent},
+  {path: 'appointments/new', component: CreateAppointmentComponent},
+  {path: 'appointments/view', component: EditAppointmentComponent}
 
 ];
 

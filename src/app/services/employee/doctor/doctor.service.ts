@@ -15,8 +15,8 @@ export class DoctorService {
 
   createDoctor(doctor:Doctor) : Observable<Doctor>{
 
-    let username='doctor'
-    let password='doctor'
+    let username='admin';
+    let password='admin';
   
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
 
@@ -26,8 +26,8 @@ export class DoctorService {
 
   findDoctorById(id:string) : Observable<Doctor>{
 
-    let username='doctor'
-    let password='doctor'
+    let username='admin';
+    let password='admin';
   
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
 
@@ -35,8 +35,8 @@ export class DoctorService {
   }
 
   updateDoctor(note:Doctor) : Observable<Doctor>{
-    let username='doctor'
-    let password='doctor'
+    let username='admin';
+    let password='admin';
   
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
 
@@ -51,8 +51,8 @@ export class DoctorService {
   }
 
   getAll() : Observable<Doctor[]>{
-    let username='doctor'
-    let password='doctor'
+    let username='admin';
+    let password='admin';
   
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
 

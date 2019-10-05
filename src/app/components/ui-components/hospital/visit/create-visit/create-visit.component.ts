@@ -6,6 +6,8 @@ import { InPatient } from 'src/app/domain/patient/in-patient';
 import { PatientService } from 'src/app/services/patient/patient.service';
 import { DoctorService } from 'src/app/services/employee/doctor/doctor.service';
 import { Doctor } from 'src/app/domain/employee/doctor';
+import { Appointment } from 'src/app/domain/appointment';
+import { AppointmentService } from 'src/app/services/appointment/appointment.service';
 
 @Component({
   selector: 'app-create-visit',
@@ -22,6 +24,10 @@ export class CreateVisitComponent implements OnInit {
   private patients: InPatient[];
   //doctors
   private doctors: Doctor[];
+  //appointments
+  private appointments: Appointment[];
+
+  appointmentToDelete: Appointment = new Appointment();
 
   days: String[] = [
     '1', '2', '3', '4', '5',
@@ -53,11 +59,13 @@ export class CreateVisitComponent implements OnInit {
   year:string;
 
   
-  constructor(private visitService:VisitService, private router:Router, private doctorService:DoctorService, private patientService:PatientService) { }
+  constructor(private appointmentService:AppointmentService, private visitService:VisitService, private router:Router, private doctorService:DoctorService, private patientService:PatientService) { }
 
   ngOnInit() {
     this.getPatients();
     this.getDoctors();
+    this.getAppointments();
+  
   }
 
   getDoctors(){
@@ -72,15 +80,37 @@ export class CreateVisitComponent implements OnInit {
     });
   }
 
+  getAppointments(){
+    this.appointmentService.getAll().subscribe(data =>{
+      this.appointments = data;
+      this.patientService.getAll().subscribe(patients =>{
+
+        this.patients = patients;
+
+        for(var i = 0; i < data.length; i++){
+          for(var j = 0; j < patients.length; j++){
+
+            if(data[i].patientId == patients[j].patientId){
+              data[i].patient = patients[j];
+            }
+
+          }
+        }
+
+      });
+    });
+  }
+
   newDoctor() : void{
     this.submitted = false;
     this.visit = new Visit();
   }
 
   save(){
-
-    this.visit.visitDate = this.getFullDate();
     this.visitService.createVisit(this.visit).subscribe(data => console.log(data), error => console.log(error));
+
+    this.appointmentService.deleteAppointment(this.appointmentToDelete.appointmentId).subscribe(data => console.log(data), error => console.log(error));
+
     this.visit = new Visit();
   }
 
@@ -119,6 +149,31 @@ export class CreateVisitComponent implements OnInit {
       console.log(value);
     }
 
+  }
+
+  getAppointment(value:string){
+
+    if(value != '-1'){
+
+      this.appointmentService.findAppointmentById(value).subscribe(data => {
+
+        this.appointmentToDelete = data;
+
+        this.visit.visitDate = data.bookingDate;
+        this.visit.patientId = data.patientId;
+
+        this.patientService.findPatientById(data.patientId).subscribe(patientData => {
+
+          this.visit.patient = patientData;
+
+        });
+      });
+
+      console.log(value);
+    }
+    else{
+      console.log(value);
+    }
   }
 
 

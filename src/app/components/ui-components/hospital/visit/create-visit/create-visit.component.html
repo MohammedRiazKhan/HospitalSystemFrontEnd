@@ -1,94 +1,79 @@
 <div class="container" style="margin-top: 10px">
 
-        <div class="card-header">
-            <h3>New Visit</h3>
-         </div>
-        
-        <div clas="card">
+  <div class="card-header">
+    <h3>New Visit</h3>
+  </div>
 
-          <div class="card-body">
-                <form (ngSubmit)="onSubmit()" #visitForm="ngForm">
-  
+  <div clas="card">
 
-                  <div class="form-group">
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #visitForm="ngForm">
 
-                    <label for="employmentDate">Employment Date</label>
-        
-                    <div class="input-group">
-        
-                      <select class="form-control" #month (change)='getMonth(month.value)'>
-                        <option value="-1">Month</option>
-                        <option *ngFor="let month of months" [value]="month">{{month}}</option>
-                     </select>   
-                     
-                      <select class="form-control" #day (change)='getDay(day.value)'>
-                          <option value="-1">Day</option>
-                          <option  *ngFor="let day of days" [value]="day">{{day}}</option>
-                      </select> 
-        
-                      <select class="form-control" #year (change)='getYear(year.value)'>
-                          <option value="-1">Year</option>
-                          <option  *ngFor="let year of years" [value]="year">{{year}}</option>
-                      </select>   
-        
-                    </div>
-        
-                </div>
+        <div class="form-group">
+          <label for="appointmentId">Appointment</label>
+          <select class="form-control" id="appointmentId" #appointmentItself
+            (change)='getAppointment(appointmentItself.value)' ([ngModel])="appointment.appointmentId" required>
+            <option value="-1">Select Appointment</option>
+            <option *ngFor="let appointment of appointments" name="appointmentId" [value]="appointment.appointmentId">
+              {{appointment.patient.firstName + " " + appointment.patient.lastName + " - " + appointment.bookingDate}}
+            </option>
+          </select>
+          <!-- <div [hidden]="patientItself.valid || patientItself.pristine" class="alert alert-danger"> Please Select a Patient </div> -->
+        </div>
 
-                  <!-- <div class="form-group ">
-                    <label for="visitDate">Visit Date</label>
-                    <input type="text" id="visitDate" #visitDate required [(ngModel)]="visit.visitDate" name="visitDate" class="form-control"/>
-                    <div [hidden]="visitDate.valid || visitDate.pristine" class="alert alert-danger"> Visit Date is required </div>
-                  </div> -->
+        <div class="form-group">
+          <label for="employmentDate">Visit Date</label>
+          <input type="text" id="visitDate" #visitDate [(ngModel)]="visit.visitDate" [value]="date" name="visitDate"
+            class="form-control" readonly />
+        </div>
 
-                  <div class="form-group">
-                    <label for="patientId">Patient</label>
-                    <select class="form-control" id="patientId" #patientItself (change)='getPatient(patientItself.value)' ([ngModel])="visit.patientId" required>
-                      <option value="-1">Select Patient</option>
-                      <option *ngFor="let patient of patients" name="patientId" [value]="patient.patientId">
-                        {{patient.firstName}}
-                      </option>
-                    </select>
-                    <!-- <div [hidden]="patientItself.valid || patientItself.pristine" class="alert alert-danger"> Please Select a Patient </div> -->
-                  </div>
+        <div class="form-group">
+          <label for="patientId">Patient</label>
+          <input type="text" id="" #patientId [(ngModel)]="visit.patientId" [value]="visit.patient.firstName"
+            name="patientId" class="form-control" readonly />
+        </div>
 
-                  <div class="form-group">
-                    <label for="employeeId">Doctor</label>
-                    <select class="form-control" id="employeeId" #doctorItself (change)='getDoctor(doctorItself.value)' ([ngModel])="visit.doctorId" required>
-                      <option value="-1">Select Doctor</option>
-                      <option *ngFor="let doctor of doctors" name="employeeId" [value]="doctor.employeeId">
-                        {{doctor.firstName}}
-                      </option>
-                    </select>
-                    <!-- <div [hidden]="doctorItself.valid || doctorItself.pristine" class="alert alert-danger"> Please Select a Doctor </div> -->
-                  </div>
+        <div class="form-group">
+          <label for="employeeId">Doctor</label>
+          <select class="form-control" id="employeeId" #doctorItself (change)='getDoctor(doctorItself.value)'
+            ([ngModel])="visit.doctorId" required>
+            <option value="-1">Select Doctor</option>
+            <option *ngFor="let doctor of doctors" name="employeeId" [value]="doctor.employeeId">
+              {{doctor.firstName}}
+            </option>
+          </select>
+          <!-- <div [hidden]="doctorItself.valid || doctorItself.pristine" class="alert alert-danger"> Please Select a Doctor </div> -->
+        </div>
 
-                  <div class="form-group">
-                    <label for="duration">Duration</label>
-                    <select class="form-control" id="duration" #duration (change)='getDuration(duration.value)' ([ngModel])="visit.duration" required>
-                      <option value="-1">Select Duration</option>
-                      <option *ngFor="let duration of durations" name="duration" [value]="duration">
-                        {{duration}}
-                      </option>
-                    </select>
-                    <!-- <div [hidden]="duration.valid || duration.pristine" class="alert alert-danger"> Please Select a Duration </div> -->
-                  </div>
+        <div class="form-group">
+          <label for="duration">Duration</label>
+          <select class="form-control" id="duration" #duration (change)='getDuration(duration.value)'
+            ([ngModel])="visit.duration" required>
+            <option value="-1">Select Duration</option>
+            <option *ngFor="let duration of durations" name="duration" [value]="duration">
+              {{duration}}
+            </option>
+          </select>
+          <!-- <div [hidden]="duration.valid || duration.pristine" class="alert alert-danger"> Please Select a Duration </div> -->
+        </div>
 
-                  <div class="form-group">
-                    <label for="patientNote">Notes</label>
-                    <textarea cols="25" rows="10" id="patientNote"  required [(ngModel)]="visit.patientNote" name="patientNote" class="form-control"></textarea>
-                    <!-- <div [hidden]="notes.valid || notes.pristine" class="alert alert-danger"> Please Select a Duration </div> -->
-                  </div>
+        <div class="form-group">
+          <label for="patientNote">Notes</label>
+          <textarea cols="25" rows="10" id="patientNote" required [(ngModel)]="visit.patientNote" name="patientNote"
+            class="form-control"></textarea>
+          <!-- <div [hidden]="notes.valid || notes.pristine" class="alert alert-danger"> Please Select a Duration </div> -->
+        </div>
 
-                  <div>
-                      <button type="submit" [disabled]="visitForm.form.invalid" class="btn btn-primary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px" routerLink="visits">Save</button>
-  
-                  
-                      <button (click)="cancel()" class="btn btn-secondary col-sm-12 col-md-2" style="margin-right:5px; margin-bottom: 5px">Cancel</button>
-                  </div>
-              
-                </form>
-            </div>      
-         </div>
+        <div>
+          <button type="submit" [disabled]="visitForm.form.invalid" class="btn btn-primary col-sm-12 col-md-2"
+            style="margin-right:5px; margin-bottom: 5px" routerLink="visits">Save</button>
+
+
+          <button (click)="cancel()" class="btn btn-secondary col-sm-12 col-md-2"
+            style="margin-right:5px; margin-bottom: 5px">Cancel</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
 </div>
-    

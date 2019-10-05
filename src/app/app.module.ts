@@ -18,6 +18,9 @@ import { ViewVisitComponent } from './components/ui-components/hospital/visit/vi
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './components/ui-components/site-components/login//login.component';
+import { CreateAppointmentComponent } from './components/ui-components/hospital/appointment/create-appointment/create-appointment.component';
+import { ListAppointmentComponent } from './components/ui-components/hospital/appointment/list-appointment/list-appointment.component';
+import { EditAppointmentComponent } from './components/ui-components/hospital/appointment/edit-appointment/edit-appointment.component';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import { LoginComponent } from './components/ui-components/site-components/login
     DoctorListComponent,
     EditDoctorComponent,
     ViewVisitComponent,
-    LoginComponent
+    LoginComponent,
+    CreateAppointmentComponent,
+    ListAppointmentComponent,
+    EditAppointmentComponent
   ],
   imports: [
     BrowserModule,

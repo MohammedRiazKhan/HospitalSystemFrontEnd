@@ -14,9 +14,8 @@ export class VisitService {
   constructor(private http:HttpClient) {}
 
   createVisit(visit:Visit) : Observable<Visit>{
-    let username='doctor'
-    let password='doctor'
-  
+    let username='admin';
+    let password='admin';
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
 
     return this.http.post<Visit>(this.baseURL + '/new', visit, {headers});
@@ -24,8 +23,8 @@ export class VisitService {
   }
 
   findVisitById(id:string) : Observable<Visit>{
-    let username='doctor'
-    let password='doctor'
+    let username='admin';
+    let password='admin';
   
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
 
@@ -33,8 +32,8 @@ export class VisitService {
   }
 
   updateVisit(visit:Visit) : Observable<Visit>{
-    let username='doctor'
-    let password='doctor'
+    let username='admin';
+    let password='admin';
   
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
 
@@ -49,8 +48,8 @@ export class VisitService {
   }
 
   getAll() : Observable<Visit[]>{
-    let username='doctor'
-    let password='doctor'
+    let username='admin';
+    let password='admin';
   
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
 

@@ -16,8 +16,8 @@ export class PatientService {
   constructor(private http:HttpClient) {}
 
   createPatient(patient:InPatient) : Observable<InPatient>{
-    let username='doctor'
-    let password='doctor'
+    let username='admin';
+    let password='admin';
   
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
 
@@ -26,8 +26,8 @@ export class PatientService {
   }
 
   findPatientById(id:string) : Observable<InPatient>{
-    let username='doctor'
-    let password='doctor'
+    let username='admin';
+    let password='admin';
   
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
 
@@ -35,8 +35,8 @@ export class PatientService {
   }
 
   updatePatient(patient:InPatient) : Observable<InPatient>{
-    let username='doctor'
-    let password='doctor'
+    let username='admin';
+    let password='admin';
   
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
 
@@ -52,8 +52,8 @@ export class PatientService {
 
   getAll() : Observable<InPatient[]>{
 
-    let username='doctor'
-    let password='doctor'
+    let username='admin';
+    let password='admin';
   
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
 
