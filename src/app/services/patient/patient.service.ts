@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 
 import { InPatient } from 'src/app/domain/patient/in-patient';
 
-
 @Injectable({
   providedIn: 'root'
 })

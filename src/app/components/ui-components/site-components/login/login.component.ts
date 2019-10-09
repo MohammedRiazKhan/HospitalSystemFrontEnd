@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   this.loginservice.authenticate(this.userName, this.passwords).subscribe(data => {
 
-        this.router.navigate(['/patients'])
+        this.router.navigate(['/patients/list'])
         this.invalidLogin = false
         this.loginservice.unhide();
 

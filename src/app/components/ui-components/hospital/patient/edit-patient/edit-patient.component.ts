@@ -33,8 +33,7 @@ export class EditPatientComponent implements OnInit {
 
   update(){
     this.patientService.updatePatient(this.patient).subscribe(data => console.log(data), error1 => console.log(error1));
-    this.router.navigate(['/patients']);
-
+    this.router.navigate(['/patients/list']);
   }
 
   onSubmit(){
@@ -44,7 +43,7 @@ export class EditPatientComponent implements OnInit {
 
   cancel(){
 
-    this.router.navigate(['/patients']);
+    this.router.navigate(['/patients/list']);
 
   }
 

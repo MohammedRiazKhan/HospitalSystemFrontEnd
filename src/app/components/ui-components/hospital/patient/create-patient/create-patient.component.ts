@@ -32,13 +32,14 @@ export class CreatePatientComponent implements OnInit {
   }
 
   onSubmit(){
+    this.router.navigate(['/patients/list']);
     this.submitted = true;
     this.save();
-    this.router.navigate(['/patients']);
+   
   }
 
   cancel(){
-    this.router.navigate(['/patients']);
+    this.router.navigate(['/patients/list']);
   }
 
 }

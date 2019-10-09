@@ -27,7 +27,7 @@
         </div>
 
         <div class="form-group">
-          <label for="identityNumber">Idendtity Number</label>
+          <label for="identityNumber">Identity Number</label>
           <input type="text" id="identityNumber" #identityNumber="ngModel" required [(ngModel)]="doctor.identityNumber" name="identityNumber" class="form-control" />
           <div [hidden]="identityNumber.valid || identityNumber.pristine" class="alert alert-danger"> Identity Number is required </div>
         </div>

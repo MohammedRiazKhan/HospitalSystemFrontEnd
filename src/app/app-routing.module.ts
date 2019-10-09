@@ -17,9 +17,8 @@ import { EditAppointmentComponent } from './components/ui-components/hospital/ap
 
 const routes: Routes = [
 
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'patients', component: PatientListComponent},
+  {path: 'patients/list', component: PatientListComponent},
   {path: 'visits', component: VisitListComponent},
   {path: 'doctors', component : DoctorListComponent},
   {path: 'doctors/new', component: CreateDoctorComponent},
@@ -30,7 +29,8 @@ const routes: Routes = [
   {path: 'visits/view', component: ViewVisitComponent},
   {path: 'appointments', component: ListAppointmentComponent},
   {path: 'appointments/new', component: CreateAppointmentComponent},
-  {path: 'appointments/view', component: EditAppointmentComponent}
+  {path: 'appointments/view', component: EditAppointmentComponent},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
 
 ];
 
